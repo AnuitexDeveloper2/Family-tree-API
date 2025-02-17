@@ -8,7 +8,7 @@ declare global {
       API_KEY: string;
 
       // Database
-      CONNECTION_STRING: string
+      CONNECTION_STRING: string;
     }
   }
 

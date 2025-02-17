@@ -19,7 +19,7 @@ import { Public } from "./decorators/public-route.decorator";
     async registerUser() {
     //   const data = await this.authService.register(registerDTO);
   
-      return { message: "User registered successfully!", data: "Ok" };
+      return { message: "User registered successfully!", data: process.env.CONNECTION_STRING };
     }
   
     @Public()

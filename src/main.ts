@@ -5,11 +5,12 @@ import {
   NestFastifyApplication,
 } from "@nestjs/platform-fastify";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
+import { APIKeyAuthGuard } from "modules/auth/guards/api-key-auth.guard";
 import { AppModule } from "./app.module";
+import { ResponseInterceptor } from "interceptors/transform.interceptor";
+import { UserAuthGuard } from "modules/auth/guards/user-auth.guard";
 import * as dotenv from "dotenv";
 import multipart from "@fastify/multipart";
-import { ResponseInterceptor } from "./interceptors/transform.interceptor";
-import { UserAuthGuard } from "./modules/auth/guards/user-auth.guard";
 
 dotenv.config();
 
@@ -44,9 +45,6 @@ async function bootstrap() {
 
   app.useGlobalPipes(new ValidationPipe({ transform: true, whitelist: true }));
   Logger.log("😎 Global validation pipe initialized!", "bootstrap");
-
-  const httpAdapterHost = app.get(HttpAdapterHost);
-  Logger.log("😎 Global exceptions filter initialized!", "bootstrap");
 
   app.useGlobalGuards(new UserAuthGuard());
   Logger.log(`😎 Global custom JWT auth guard initialized!`, `bootstrap`);
