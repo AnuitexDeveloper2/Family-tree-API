@@ -5,7 +5,6 @@ import {
   NestFastifyApplication,
 } from "@nestjs/platform-fastify";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
-import { APIKeyAuthGuard } from "modules/auth/guards/api-key-auth.guard";
 import { AppModule } from "./app.module";
 import { ResponseInterceptor } from "interceptors/transform.interceptor";
 import { UserAuthGuard } from "modules/auth/guards/user-auth.guard";

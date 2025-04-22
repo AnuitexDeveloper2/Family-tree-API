@@ -18,7 +18,7 @@ export class Member {
     biography: string;
 
     @Prop()
-    photosUrl: string;
+    photosUrl: string[];
 }
 
 export const MemberSchema = SchemaFactory.createForClass(Member);

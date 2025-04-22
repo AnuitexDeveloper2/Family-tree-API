@@ -1,35 +1,37 @@
 import {
-    Body,
-    Controller,
-    Get,
-    HttpCode,
-    Param,
-    Patch,
-    Post,
-  } from "@nestjs/common";
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  Param,
+  Patch,
+  Post,
+} from "@nestjs/common";
 import { Public } from "./decorators/public-route.decorator";
+import { AuthService } from "./auth.service";
+import { RegisterDTO } from "./dto/register.dto";
+import { LoginDTO } from "./dto/login.dto";
 
-  @Controller("auth")
-  export class AuthController {
-    constructor() {}
-  
-    @Public()
-    @Post("register")
-    @HttpCode(200)
-    async registerUser() {
-    //   const data = await this.authService.register(registerDTO);
-  
-      return { message: "User registered successfully!", data: process.env.CONNECTION_STRING };
-    }
-  
-    @Public()
-    @Post("login")
-    @HttpCode(200)
-    async login() {
-    //   const data = await this.authService.login(loginDTO);
-  
-      return { message: "User login successfully!", data: "Ol" };
-    }
+@Controller("auth")
+export class AuthController {
+  constructor(private authService: AuthService) { }
 
+  @Public()
+  @Post("register")
+  @HttpCode(200)
+  async registerUser(@Body() dto: RegisterDTO) {
+    const data = await this.authService.register(dto);
+
+    return { message: "User registered successfully!", data };
   }
-  
+
+  @Public()
+  @Post("login")
+  @HttpCode(200)
+  async login(@Body() dto: LoginDTO) {
+    const data = await this.authService.login(dto);
+
+    return { message: "User login successfully!", data };
+  }
+
+}
