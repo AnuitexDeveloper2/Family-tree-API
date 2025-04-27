@@ -2,6 +2,7 @@ import { Body, Controller, Get, Post } from '@nestjs/common';
 import { MembersService } from './members.service';
 import { Public } from 'modules/auth/decorators/public-route.decorator';
 import { CreateMemberDTO } from './dto/create-member.dto';
+import { GetMemberDataDTO } from './dto/get-member-details.dto';
 
 @Controller('members')
 export class MembersController {
@@ -26,9 +27,9 @@ export class MembersController {
   }
 
   @Public()
-  @Get()
-  async getMemberDetails() {
-    const data = await this.service.getMemberDetails();
+  @Post('/get')
+  async getMemberDetails(@Body() dto: GetMemberDataDTO) {
+    const data = await this.service.getMemberDetails(dto);
 
     return { message: "Get Member Details", data };
   }

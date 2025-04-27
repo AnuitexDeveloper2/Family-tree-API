@@ -6,13 +6,28 @@ export type MemberDocument = Member & Document
 @Schema()
 export class Member {
     @Prop()
-    name: string;
+    firstName: string;
 
     @Prop()
-    birthDay: string;
+    lastName: string;
 
     @Prop()
-    deathDay: string;
+    surname: string;
+
+    @Prop()
+    birthYear: number;
+
+    @Prop()
+    birthPlace: string;
+
+    @Prop()
+    birthDate: string;
+
+    @Prop()
+    deathYear: number;
+
+    @Prop()
+    deathDate: string;
 
     @Prop()
     biography: string;

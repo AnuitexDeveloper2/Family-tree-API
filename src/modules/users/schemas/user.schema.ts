@@ -21,4 +21,4 @@ export class User {
     memberId?: string;
 }
 
-export const MemberSchema = SchemaFactory.createForClass(User);
+export const UserSchema = SchemaFactory.createForClass(User);

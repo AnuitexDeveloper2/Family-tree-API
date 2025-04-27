@@ -1,20 +1,40 @@
-import { IsOptional, IsString } from "class-validator";
+import { IsNumber, IsOptional, IsString } from "class-validator";
 
 export class CreateMemberDTO {
 
+    @IsOptional()
     @IsString()
-    name: string;
+    firstName: string;
 
     @IsOptional()
     @IsString()
-    birthDay: string;
+    lastName: string;
 
     @IsOptional()
     @IsString()
-    deathDay: string;
+    surname: string;
+
+    @IsOptional()
+    @IsString()
+    birthDate: string;
+
+    @IsOptional()
+    @IsString()
+    birthPlace: string;
+
+    @IsOptional()
+    @IsNumber()
+    deathYear: number;
+
+    @IsOptional()
+    @IsNumber()
+    birthYear: number;
+
+    @IsOptional()
+    @IsString()
+    deathDate: string;
 
     @IsOptional()
     @IsString()
     biography: string;
-
 }
